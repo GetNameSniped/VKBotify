@@ -4,6 +4,9 @@
   "package": "net.vonkremlin.botify.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ClientConnectionMixin",
+    "ClientPlayNetworkHandlerMixin",
+    "MinecraftClientMixin"
   ],
   "client": [
     "ExampleMixin"

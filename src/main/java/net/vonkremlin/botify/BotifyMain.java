@@ -8,6 +8,8 @@ import net.minecraft.network.listener.PacketListener;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.c2s.play.VehicleMoveC2SPacket;
 import net.vonkremlin.botify.event.KeyInputHandler;
+import net.vonkremlin.botify.mixin.PlayerMoveC2SPacketAccessor;
+import net.vonkremlin.botify.mixin.VehicleMoveC2SPacketAccessor;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,10 +41,13 @@ public class BotifyMain implements ModInitializer {
 	public static void onPacketReceive(Packet<?> packet) {
 
 		}
-	public static void onPacketSend(Packet<?> packet) {
+	public static void onPacketSend(Packet packet) {
 		if (exampleModuleToggled&&packet instanceof PlayerMoveC2SPacket) {
 			double x = ((int)(((PlayerMoveC2SPacket) packet).getX(mc.player.getX()) * 100)) / 100.0;
 			double z = ((int)(((PlayerMoveC2SPacket) packet).getZ(mc.player.getZ()) * 100)) / 100.0;
+			((PlayerMoveC2SPacketAccessor) packet).setX(x);
+			((PlayerMoveC2SPacketAccessor) packet).setZ(z);
+
 		}
 
 	}

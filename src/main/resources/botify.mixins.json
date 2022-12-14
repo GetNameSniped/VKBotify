@@ -6,7 +6,9 @@
   "mixins": [
     "ClientConnectionMixin",
     "ClientPlayNetworkHandlerMixin",
-    "MinecraftClientMixin"
+    "MinecraftClientMixin",
+    "PlayerMoveC2SPacketAccessor",
+    "VehicleMoveC2SPacketAccessor"
   ],
   "client": [
     "ExampleMixin"
